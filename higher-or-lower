@@ -1,0 +1,33 @@
+import random
+point = 0
+while True:
+    for _ in range(5):
+        number = random.randint(1,100)
+        guess = input(f"Higher or lower {number}?       ").upper()
+        new_number = random.randint(1,100)
+        if new_number == number:
+            print("1% chance nice! Go gamble or something")
+            point += 5
+        if guess =="H":
+            print(new_number)
+            if new_number > number:
+                print("You got it right!!!")
+                point += 1
+            else: 
+                print("womp womp")
+                point -= 1
+        elif guess == "L":
+            print(new_number)
+            if new_number > number:
+                print("womp womp")
+                point -= 1
+            else: 
+                print("Correct!!!")
+                point += 1
+        else:
+            print("Please put H or L")
+        print(f"Points: {point}")
+    play_again = input("Wanna Play again?")
+    if play_again.upper() != "Y":
+        print("Bye Bye!!!")
+        break
