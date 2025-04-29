@@ -1,0 +1,36 @@
+import pydealer
+
+deck = pydealer.Deck(rebuild=True, re_shuffle=True)
+deck.shuffle()
+
+def get_card_color(card):
+    return 'red' if card.suit in ["Hearts", "Diamonds"] else 'black'
+
+while True:
+    hand = deck.deal(1)
+    first_round_card = hand[0]  
+    
+    guess = input("Is the card 'Black' or 'Red'? ").strip().lower()
+    
+    actual_color = get_card_color(card)[0]
+    if guess == actual_color:
+        print(f"Correct! The {first_round_card} is {actual_color}.")
+        break
+    else:
+        print(f"Wrong! The {first_round_card} is {actual_color}.")
+prev_card = first_round_card
+
+while True:
+    second_round_card = deck.deal(1)[0]
+    guess = input(f"Last card was {first_round_card} Higher or lower?")
+    if (guess == "h" and first_round_card.value > prev_card.value) or \
+       (guess == "l" and first_round_card.value < prev_card.value):
+        print("Correct!!!")
+    else:
+        print("Wrong haha")
+        break
+    
+
+while True:
+    guess = input(f"{first_round_card} and {second_round_card} inside or outside?")
+    if (guess == "i" and )
